@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 export const HomePage = () => {
   const [posts, setPosts] = useState([]);
-  const COHORT_NAME = '2302-acc-pt-web-pt-d';
+  const COHORT_NAME = "2302-acc-pt-web-pt-d";
 
+  // GET post function
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://strangers-things.herokuapp.com/api/${COHORT_NAME}/posts"
+        );
+        const data = await response.json();
+        setPosts(data.data.posts);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
- useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const response = await fetch('https://strangers-things.herokuapp.com/api/${COHORT_NAME}/posts');
-      const data = await response.json();
-      setPosts(data.data.posts);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-  fetchData();
-}, []);
+    fetchData();
+  }, []);
 
   return (
     <div>
-        <div className="header">
-      <h1>Stranger's Things</h1>
-        </div>
+      <div className="header">
+        <h1>Stranger's Things</h1>
+      </div>
       <div>
-        {posts.map(post => (
+        {posts.map((post) => (
           <div key={post._id}>
             <h2>{post.title}</h2>
             <p>{post.description}</p>
@@ -35,4 +37,3 @@ export const HomePage = () => {
     </div>
   );
 };
-
