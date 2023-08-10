@@ -7,6 +7,7 @@ export const Login = () => {
   //State Managment
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState(null);
 
   //handleSubmit
   const handleSubmit = (event) => {
@@ -57,6 +58,8 @@ export const Login = () => {
         />
         <button onClick={handleSubmit}>Login</button>
       </div>
+      {/* Token Authentication */}
+      {token && <p>Token Generated</p>}
     </div>
   );
 };
