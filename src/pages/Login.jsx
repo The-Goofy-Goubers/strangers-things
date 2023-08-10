@@ -9,41 +9,65 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(null);
 
-  //handleSubmit
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert("you clicked me");
+  //Base URL variables
+  const cohortName = "2302-acc-pt-web-pt-d";
+  const baseURL = `https://strangers-things.herokuapp.com/${cohortName}`;
 
-    //POST Login
-    const cohortName = "2302-acc-pt-web-pt-d";
-    const baseURL = `https://strangers-things.herokuapp.com/${cohortName}`;
+  //POST Login
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(`${baseURL}/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password,
+        }),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        setToken(result.data.token);
+      } else {
+        console.error(result.token);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    const submitLogin = async () => {
-      try {
-        const response = await fetch(`${baseURL}/users/login`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
+  // POST Register User
+  const handleRegistration = async () => {
+    try {
+      const response = await fetch(`${baseURL}/users/register`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
             username: username,
             password: password,
-          }),
-        });
-        const result = await response.json();
-        console.log(result);
-      } catch (err) {
-        console.error(err);
+          },
+        }),
+      });
+      const result = await response.json();
+      if (response.ok) {
+        setToken(result.data.token);
+      } else {
+        console.error(result.error);
       }
-    };
-    // Call the function to trigger the POST request
-    submitLogin();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <div>
+    <div className="login-container">
+      <h1>Welcome to Stranger's Things</h1>
+      <p>Please login to your existing account or becoming a new stranger!</p>
+      <div className="login-container">
         <input
           type="text"
           placeholder="Username"
@@ -56,7 +80,8 @@ export const Login = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button onClick={handleSubmit}>Login</button>
+        <button onClick={handleLogin}>Login</button>
+        <button onClick={handleRegistration}>Become a Stranger</button>
       </div>
       {/* Token Authentication */}
       {token && <p>Token Generated</p>}
