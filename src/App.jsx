@@ -5,6 +5,7 @@ import { Login } from "./pages/Login";
 import { Posts } from "./pages/Posts";
 import { Profile } from "./pages/Profile";
 import { Navbar } from "./components/Navbar";
+import { RegisterPage } from "./pages/Register.jsx";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/Posts" element={<Posts />} />
           <Route path="/pages/Profile" element={<Profile />} />
+          <Route path="/pages/Register" element={<RegisterPage />} />
         </Routes>
       </div>
       <div>

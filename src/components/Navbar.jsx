@@ -7,6 +7,8 @@ export const Navbar = () => {
       <Link to={"./pages/Posts"}>Posts</Link>
       <Link to={"/pages/Profile"}>Profile</Link>
       <Link to={"/pages/Login"}>Login</Link>
+      <Link to={"/pages/Register"}>Register</Link>
+
     </div>
   );
 }
