@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { HomePage } from "./components/Homepage.jsx";
 import { Login } from "./pages/Login";
 import { Posts } from "./pages/Posts";
 import { Profile } from "./pages/Profile";
@@ -28,7 +27,7 @@ function App() {
       </div>
       <div>
         <div id="main-section">
-          <HomePage />
+          <h1></h1>
         </div>
       </div>
     </>
