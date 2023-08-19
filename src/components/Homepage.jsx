@@ -31,6 +31,8 @@ export const HomePage = () => {
           <div key={post._id}>
             <h2>{post.title}</h2>
             <p>{post.description}</p>
+            <p>{post.price} | location : {post.location}</p>
+            <p>post created at: {post.createdAt} | most recent update: {post.updatedAt}</p>
           </div>
         ))}
       </div>
