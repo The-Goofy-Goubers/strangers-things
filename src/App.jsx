@@ -5,6 +5,7 @@ import { Posts } from "./pages/Posts";
 import { Profile } from "./pages/Profile";
 import { Navbar } from "./components/Navbar";
 import { RegisterPage } from "./pages/Register.jsx";
+import { HomePage } from "./components/Homepage";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       {/* Routes */}
       <div>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/Posts" element={<Posts />} />
           <Route path="/pages/Profile" element={<Profile />} />
