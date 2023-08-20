@@ -28,6 +28,7 @@ export const Login = () => {
       });
       const result = await response.json();
       if (response.ok) {
+        console.log(response)
         setToken(result.data.token);
       } else {
         console.error(result.token);
