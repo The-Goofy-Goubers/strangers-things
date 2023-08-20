@@ -35,7 +35,7 @@ export const RegisterPage = () => {
       });
     // if else statement to show our errors
       if (response.ok) {
-        console.log(result)
+        console.log(response)
         setSuccess(true);
         setError('');
       } else {
@@ -43,6 +43,7 @@ export const RegisterPage = () => {
         setError(data.error);
       }
     } catch (error) {
+      console.log(error)
       setError('An error occurred while registering.');
     }
   };
