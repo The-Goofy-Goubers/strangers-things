@@ -32,7 +32,7 @@ export const HomePage = () => {
   return (
     <div>
       <div className="header">
-        <h1>Stranger's Things</h1>
+        {/* <h1>Stranger's Things</h1> */}
       </div>
       <div>
         {posts.map((post) => (
