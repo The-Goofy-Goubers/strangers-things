@@ -22,13 +22,11 @@ function App() {
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/Posts" element={<Posts />} />
           <Route path="/pages/Profile" element={<Profile />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </div>
-      <div>
-        <div id="main-section">
-          <HomePage />
-        </div>
-      </div>
+      
+    
     </>
   );
 }
