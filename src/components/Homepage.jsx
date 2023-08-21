@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import SinglePost from "./SinglePost";
+import PostModal from "./PostModal";
 
 export const HomePage = () => {
   const [posts, setPosts] = useState([]);
-  const COHORT_NAME = "2302-acc-pt-web-pt-d";
+  const [currentUser, setCurrentUser] = useState(null);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const COHORT_NAME = "2302-ACC-PT-WEB-PT-D";
 
   // GET post function
   useEffect(() => {
@@ -21,6 +25,10 @@ export const HomePage = () => {
     fetchData();
   }, []);
 
+  const handlePostClick = (post) => {
+    setSelectedPost(post);
+  };
+
   return (
     <div>
       <div className="header">
@@ -29,13 +37,21 @@ export const HomePage = () => {
       <div>
         {posts.map((post) => (
           <div key={post._id}>
-            <h2>{post.title}</h2>
-            <p>{post.description}</p>
-            <p>{post.price} | location : {post.location}</p>
-            <p>post created at: {post.createdAt} | most recent update: {post.updatedAt}</p>
+          <SinglePost
+          post={post}
+          currentUser={currentUser}
+          onClick={() => handlePostClick(post)}
+          />
           </div>
         ))}
       </div>
+      {selectedPost && (
+        <PostModal
+        post={selectedPost}
+        currentUser={currentUser}
+        onClose={() => setSelectedPost(null)}
+        />
+      )}
     </div>
   );
 };
