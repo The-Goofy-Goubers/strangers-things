@@ -19,13 +19,15 @@ function App() {
       {/* Routes */}
       <div>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/pages/Login" element={<Login />} />
           <Route path="/pages/Posts" element={<Posts />} />
           <Route path="/pages/Profile" element={<Profile />} />
-          <Route path="/" element={<HomePage />} />
         </Routes>
       </div>
-      
+      <div id="main-section">
+        <h1></h1>
+      </div>
     
     </>
   );
